@@ -1,0 +1,35 @@
+@import 'assets/styles/_variables';
+
+.Button {
+  border-radius: 3px;
+  border: none;
+  color: $black;
+  background-color: transparent;
+  font-size: $font-mid;
+  width: 100%;
+  padding: 12px 0;
+  cursor: pointer;
+  
+  &:focus {
+    outline: none;
+  }
+
+  &_theme {
+    &_blue {
+      background-color: $blue;
+      color: $white;
+
+      &:hover {
+        background-color: darken($blue, 10%);
+      }
+    }
+  }
+
+  &_size {
+    &_small {
+      font-size: 12px;
+      font-weight: 300;
+      padding: 4px 0;
+    }
+  }
+}

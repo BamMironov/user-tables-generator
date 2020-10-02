@@ -1,0 +1,18 @@
+@import 'assets/styles/_mixins';
+@import 'assets/styles/_variables';
+
+.UserForm {
+  padding: 16px;
+  @include border-box;
+  @include border($dark-grey);
+  box-shadow: 0px 3px 2.5px rgba(0,0,0,0.2);
+  background-color: $white;
+
+  &-InputField {
+    margin-bottom: 18px;
+  }
+
+  &-Button {
+    margin: 12px 0;
+  }
+}

@@ -1,0 +1,29 @@
+@import "assets/styles/_variables";
+
+.Modal {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-Backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    opacity: 0.5;
+  }
+
+  &-Dialog {
+    position: relative;
+  }
+}

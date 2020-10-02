@@ -1,0 +1,21 @@
+.UserManager {
+  width: 100%;
+  max-width: 595px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &-UserLists {
+    width: 100%;
+  }
+
+  &-UserListTemplate {
+    margin-bottom: 40px;
+  }
+
+  &-UserList {
+    margin-bottom: 30px;
+  }
+}

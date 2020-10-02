@@ -1,0 +1,21 @@
+@import 'assets/styles/_mixins';
+@import 'assets/styles/_variables';
+
+.InputField {
+  &-Input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 3px;
+    color: $black;
+    box-sizing: border-box;
+    @include border($dark-grey);
+
+    &::placeholder {
+      color: $light-grey;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

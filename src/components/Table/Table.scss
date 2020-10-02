@@ -1,0 +1,87 @@
+@import "assets/styles/_mixins";
+@import "assets/styles/_variables";
+
+.Table {
+  width: 100%;
+  padding: 0;
+  border-spacing: 0;
+
+  &-Head {
+    background: $dark-blue;
+    color: $white;
+
+    @media #{$breakpoint-mobile} {
+      display: none;
+    }
+  }
+
+  &-Row {
+    @media #{$breakpoint-mobile} {
+      display: block;
+      margin-bottom: 10px;
+      border-bottom: 2px solid $grey;
+    }
+
+    &:last-child {
+      .Table-Cell {
+        &:first-child {
+          border-bottom-left-radius: 3px;
+        }
+
+        &:last-child {
+          border-bottom-right-radius: 3px;
+        }
+      }
+    }
+  }
+
+  &-Header,
+  &-Cell {
+    padding: 8px 12px;
+    text-align: left;
+    color: $black;
+  }
+
+  &-Header {
+    font-weight: normal;
+    color: #a5b5cb;
+
+    &:first-child {
+      border-top-left-radius: 3px;
+    }
+
+    &:last-child {
+      border-top-right-radius: 3px;
+    }
+  }
+
+  &-Cell {
+    text-align: left;
+    font-size: $font-small;
+    border-right: 1px solid $grey;
+    border-bottom: 1px solid $grey;
+    background-color: $white;
+
+    &:first-child {
+      border-left: 1px solid $grey;
+    }
+
+    @media #{$breakpoint-mobile} {
+      display: block;
+      border: none;
+      border-bottom: 1px solid $grey;
+      text-align: right;
+    }
+
+    &:before {
+      content: '';
+      float: left;
+      text-transform: uppercase;
+      font-weight: bold;
+
+      @media #{$breakpoint-mobile} {
+        content: attr(data-title);
+      }
+    }
+  }
+}

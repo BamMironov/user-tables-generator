@@ -1,0 +1,7 @@
+@mixin border($color, $width: 1px) {
+  border: $width solid $color;
+}
+
+@mixin border-box {
+  box-sizing: border-box;
+}
