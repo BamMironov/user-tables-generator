@@ -1,4 +1,6 @@
-import { useMemo, useReducer } from 'react';
+import { useMemo, useReducer, useCallback, useState, useEffect } from 'react';
+
+import { FormValidator } from 'validators';
 
 import { bindActionCreators } from 'utils';
 
@@ -45,16 +47,54 @@ function Reducer(actionTypes) {
   }
 }
 
-function useForm(name = '', entity) {
+function useForm(name = '', entity, scheme) {
+  let [errors, setErrors] = useState({});
+  let [isValid, setIsValid] = useState(true);
+
   const actionTypes = useMemo(() => ActionTypes(name), [name]);
   const [fields, dispatch] = useReducer(Reducer(actionTypes), State(entity));
+
+  const validator = useMemo(() => new FormValidator(scheme), [scheme]);
 
   let actions = useMemo(() => (
     bindActionCreators(ActionCreators(actionTypes), dispatch)
   ), [actionTypes]);
 
+  const validate = useCallback((data) => {
+    return validator.validate(data)
+      .then(() => {
+        setErrors({});
+        setIsValid(true);
+
+        return true;
+      })
+      .catch(errors => {
+        setErrors(errors);
+        setIsValid(false);
+
+        return false
+      });
+  }, [validator]);
+
+  const submit = useCallback((callback) => {
+    validate(fields).then((isValid) => {
+      if (isValid) {
+        callback(fields);
+      }
+    })
+  }, [fields, validate]);
+
+  useEffect(() => {
+    if (!isValid) {
+      validate(fields)
+    }
+  }, [fields, isValid, validate]);
+
   return {
+    errors,
     fields,
+    submit,
+    isValid,
     ...actions,
   }
 }
