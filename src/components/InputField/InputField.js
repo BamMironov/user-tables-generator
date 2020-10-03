@@ -9,6 +9,7 @@ import './InputField.scss';
 function InputField({
     name,
     value,
+    errors,
     onChange,
     className,
     type = 'text',
@@ -26,8 +27,17 @@ function InputField({
                 value={value}
                 onChange={handleChange}
                 placeholder={placeholder}
-                className="InputField-Input"
+                className={cn(
+                    'InputField-Input',
+                    { 'InputField-Input_Invalid': !!errors }
+                )}
             />
+
+            {errors?.map((error, index) => (
+                <div key={index} className="InputField-Error">
+                    {error}
+                </div>
+            ))}
         </div>
     )
 }

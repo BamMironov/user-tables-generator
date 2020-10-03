@@ -21,5 +21,14 @@
         color: transparent;
       }
     }
+
+    &_Invalid {
+      border-color: $red;
+    }
+  }
+
+  &-Error {
+    color: $red;
+    margin-top: 4px;
   }
 }
